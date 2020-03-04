@@ -1,0 +1,28 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Header */
+.header{
+    width: .8;
+    margin: auto;
+    text-align: center;
+}
+
+.mineField{
+    fill: red;
+}
+
+.numberField{
+    fill: grey;
+}
+
+.fieldValue{
+    text-align: center;
+    vertical-align: 50%;
+    display: none;
+}
+
+.fieldMarked{
+    fill: blue;
+}
