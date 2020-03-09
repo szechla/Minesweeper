@@ -9,12 +9,16 @@
     text-align: center;
 }
 
+.field{
+    fill: grey;
+}
+
 .mineField{
     fill: red;
 }
 
 .numberField{
-    fill: grey;
+    fill: lightgrey;
 }
 
 .fieldValue{
@@ -25,4 +29,8 @@
 
 .fieldMarked{
     fill: blue;
+}
+
+.fieldImg{
+    z-index: -1;
 }

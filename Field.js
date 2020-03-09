@@ -9,21 +9,17 @@ class Field{
     }
 
     setFieldValue(){
-        // Check neighbour fields if there are mines
+        // Check neighbour fields if there are mines'
         if(this.mine){
             return null
         }
         else{
         var value = 0;
         for (let i=-1; i<2; i++){
-            if(this.x+i > 0 && this.x+i < size){
-                for(let j=-1; j<2; j++){
-                    if(this.y+j >= 0 && this.y+j < size){               
-                        var checkedField = document.getElementById(`space-${this.x+i}-${this.y+j}`)
-                        if(checkedField.getAttribute("class") === "mineField"){
-                            value++;
-                        }
-                    }                  
+            for(let j=-1; j<2; j++){            
+                var checkedField = document.getElementById(`space-${this.x+i}-${this.y+j}`)
+                if(checkedField && checkedField.getAttribute("type") === "mine"){
+                    value++;
                 }
             }            
         }
@@ -42,6 +38,10 @@ class Field{
         svgField.setAttributeNS(null, "fill", "grey");
         svgField.setAttributeNS(null, "stroke", "black");
         svgField.setAttributeNS(null, "stroke-width", 0.01*this.width);
+        svgField.setAttributeNS(null, "class", "field");
+        if(this.mine){
+            svgField.setAttributeNS(null, "type", "mine");
+        }
 
         const svgText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         svgText.setAttributeNS(null, "width", this.width);
@@ -51,13 +51,7 @@ class Field{
         svgText.setAttribute ("id", `${this.id}-text`)
         svgText.setAttributeNS(null, "class", "fieldValue");
 
-        if(this.mine){
-            svgField.setAttributeNS(null, "class", "mineField");
-        }
-        else{
-            svgField.setAttributeNS(null, "class", "numberField");
-        } 
         document.getElementById("mask").appendChild(svgField);  
         document.getElementById("mask").appendChild(svgText);     
-    }
+    }    
 }

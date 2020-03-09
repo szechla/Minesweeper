@@ -26,11 +26,15 @@ class Board {
     showValue(){
         const target = document.getElementById(`${event.target.id}`)
         // handle left MB click
-        if (target.getAttributeNS(null, "class") != 'fieldMarked'){
-            if(target.getAttributeNS(null, "class") === 'mineField'){
+        if (target.getAttributeNS(null, "class") != 'fieldMarked' && target.getAttributeNS(null, "class") != 'fieldImg'){
+            if(target.getAttributeNS(null, "type") === 'mine'){
+                target.setAttribute("class", "mineField");
                 game.gameOver();
             }
-            document.getElementById(`${event.target.id}-text`).style.display = 'initial';
+            else{
+                target.setAttribute("class", "numberField");
+                document.getElementById(`${event.target.id}-text`).style.display = 'initial';                
+            }
         }
     }
 
@@ -39,15 +43,21 @@ class Board {
         const target = document.getElementById(`${event.target.id}`)
         const targetText = document.getElementById(`${event.target.id}-text`)
         event.preventDefault();
-        console.log("Right click!")
-        if(target.getAttribute("class") === 'fieldMarked' && !targetText.textContent){
-            target.setAttribute("class", "mineField");
+        // Click on flag
+        if(target.getAttribute("class") === 'fieldImg'){
+            const prevTarget = document.getElementById(`${target.id.substring(0, target.id.length-4)}`)
+            target.remove()
+            prevTarget.setAttribute("class", "field");
         }
-        else if(target.getAttribute("class") === 'fieldMarked' && targetText.textContent){
-            target.setAttribute("class", "numerField");
-        }
-        else{
+        // Click on unmarked field
+        else if(target.getAttribute("class") != 'fieldMarked'){
             target.setAttribute("class", "fieldMarked");
+            this.drawImage("flag", target)
+        }
+        // Click on marked field
+        else{
+            target.setAttribute("class", "field");
+            document.getElementById(`${target.id}-img`).remove();
         }
     }
 
@@ -84,11 +94,27 @@ class Board {
             for (let field of column) {
                 field.drawSVGField();
             }
-        }
+        }        
+    }
+
+    drawImage(imgName, target){
+        const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+        img.setAttributeNS(null, "href", `img/${imgName}.png`);
+        img.setAttributeNS(null, "id", `${target.id}-img`);
+        img.setAttributeNS(null, "width", 0.7*target.getAttributeNS(null, "width"));
+        img.setAttributeNS(null, "height", 0.7*target.getAttributeNS(null, "height"));
+        img.setAttributeNS(null, "x", (parseFloat(target.getAttributeNS(null, "x"))+0.15*parseFloat(target.getAttributeNS(null, "width"))));
+        img.setAttributeNS(null, "y", (parseFloat(target.getAttributeNS(null, "y"))+0.15*parseFloat(target.getAttributeNS(null, "height"))));
+        img.setAttributeNS(null, "class", 'fieldImg');
+        const targetField = document.getElementById(target.id);
+        targetField.insertAdjacentElement("afterend", img);
+    }
+
+    setFieldsValue(){
         for (let column of this.fields) {
             for (let field of column) {
                 document.getElementById(`${field.id}-text`).textContent = field.setFieldValue();
             }
         }
-	} 
+    }
 }

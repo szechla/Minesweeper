@@ -8,6 +8,7 @@ class Game {
      */
     startGame(){
         this.board.drawHTMLBoard(size);
+        this.board.setFieldsValue();
         this.ready = true;
     }
         
