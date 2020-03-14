@@ -10,11 +10,11 @@
 }
 
 .field{
-    fill: grey;
+    fill: darkgrey;
 }
 
 .mineField{
-    fill: red;
+    fill: tomato;
 }
 
 .numberField{
@@ -28,7 +28,7 @@
 }
 
 .fieldMarked{
-    fill: blue;
+    fill: grey;
 }
 
 .fieldImg{
