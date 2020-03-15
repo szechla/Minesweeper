@@ -11,7 +11,30 @@
  <!-- Header  -->
  <div class="header">
      <h1 class="title">Minesweeper Game</h1>
-     <h2>Welcome! Play and have fun!</h2>
+     <h2 id="welcomeText" class="hideInGame">Welcome to classic minesweeper game!</h2> 
+     <div id="gameParams">
+         <h3 id="infoText">Choose board size, difficulty level and play with fun!</h3>
+         <div id="gameSize">
+             <p class="paramText">Enter size (from 2 to 16) of board:</p>
+             <input id="gameSizeInput" type="number" min="2" max="16" value="6"></input>
+         </div>        
+         <div id="gameLevel">
+                <p class="paramText">Choose level of your game:</p>
+                <input type="radio" id="easy" name="difficulty" value="easy" onclick="setLevel(this.value)">
+                    <label for"easy" class="levelLabel">EASY</label>
+                </input>
+                <input type="radio" id="medium" name="difficulty" value="medium" onclick="setLevel(this.value)" checked>
+                    <label for"medium" class="levelLabel">MEDIUM</label>
+                </input>
+                <input type="radio" id="hard" name="difficulty" value="hard" onclick="setLevel(this.value)">
+                    <label for"hard" class="levelLabel">HARD</label>
+                </input>
+         </div>
+     </div>
+     <div id="stats">
+         <div id="clickCounter" class="statsEl"></div>
+         <div id="timer" class="statsEl"></div>
+     </div>
      <button id="beginGame">Start a game!</button>
  </div>
  <!-- Main Content  -->

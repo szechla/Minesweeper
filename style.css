@@ -1,5 +1,19 @@
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: moccasin;
+}
+/* HTML elements */
+body{
+    background-color: darkslategrey;
+}
+button{
+    background-color: lightgreen;
+    border-color: azure;
+    color: darkslategray;
+    padding: 0.5em 1em;
+}
+p{
+    margin: 0.3em 0;
 }
 
 /* Header */
@@ -7,6 +21,45 @@
     width: .8;
     margin: auto;
     text-align: center;
+}
+
+.title{
+    background-color: black;
+    color: tomato;
+    padding: 1em 0em;
+    margin-bottom: 0.1em;
+}
+
+#gameParams {
+    padding: 0.5em;
+}
+
+.paramText{
+    color: lavender;
+}
+
+.levelLabel{
+    color: white;
+    font-family: monospace;
+    vertical-align: text-top;
+}
+
+#gameSize, #gameLevel{
+    display: inline-block;
+    margin: auto;
+    padding: 0.1em 1.5em;
+}
+#gameSize input{
+    color: darkslategray;
+    width: 5em;
+    text-align: center;
+    font-family: monospace;
+}
+/* Board */
+#gameBoard {
+    width: fit-content;
+    margin: auto;
+    display: none;
 }
 
 .field{
@@ -33,4 +86,9 @@
 
 .fieldImg{
     z-index: -1;
+}
+
+/* Functional classes */
+.hide{
+    display: none;
 }

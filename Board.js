@@ -71,7 +71,6 @@ class Board {
                 target.setAttribute("class", "numberField");
                 document.getElementById(`${event.target.id}-text`).style.display = 'initial';
                 if(document.getElementById(`${event.target.id}-text`).innerHTML == "0"){
-                    console.log(target)
                     this.clickOnZeroField(target);
                 }                
             }
@@ -84,9 +83,6 @@ class Board {
             for(let j=-1; j<2; j++){            
                 const neighbourID = `space-${(clickedField.getAttribute("x")-1)/fieldSize+i}-${(clickedField.getAttribute("y")-1)/fieldSize+j}`
                 const neighbourField = document.getElementById(neighbourID)
-                console.log(`space-${(clickedField.getAttribute("x")-1)/fieldSize+i}-${(clickedField.getAttribute("y")-1)/fieldSize+j}`)
-                console.log(neighbourID)
-                console.log(neighbourField)
                 if(neighbourField){
                     neighbourField.setAttribute("class", "numberField");
                     document.getElementById(`${neighbourField.id}-text`).style.display = 'initial'; 
@@ -119,7 +115,6 @@ class Board {
             target.setAttribute("class", "field");
             document.getElementById(`${target.id}-img`).remove();
         }
-        else 
         this.checkForWin();
     }
     

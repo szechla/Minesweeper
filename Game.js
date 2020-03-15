@@ -7,15 +7,26 @@ class Game {
      * Initializes game. 
      */
     startGame(){
+        this.clearGame();
+        hideElementsInGame()
+        document.getElementById("gameBoard").style.display = "inherit"
         this.board.drawHTMLBoard(size);
         this.board.setFieldsValue();
         this.ready = true;
+        setTimer();
+    }
+    clearGame(){
+        clickCounter = 0;
+        document.getElementById("clickCounter").innerHTML = `Clicks: ${clickCounter}`;
+        document.getElementById("mask").innerHTML = "";
+        this.board = new Board(size, numOfMines);
     }
         
     /** 
      * Displays win info 
      */
     winGame(winMessage){
+        stopTimer();
         alert(winMessage);
     }
     
@@ -32,6 +43,7 @@ class Game {
                 this.board.drawSVGImage("bomb", allFields[i])
             }
         }
+        stopTimer();
         alert(loseMessage)
 		// document.getElementById('game-over').style.display = 'block';
         // document.getElementById('game-over').textContent = loseMessage;
