@@ -11,9 +11,9 @@
  <!-- Header  -->
  <div class="header">
      <h1 class="title">Minesweeper Game</h1>
-     <h2 id="welcomeText" class="hideInGame">Welcome to classic minesweeper game!</h2> 
+     <h2 id="welcomeText" class="hideInGame">WELCOME TO CLASSIC MINESWEEPER GAME!</h2> 
      <div id="gameParams">
-         <h3 id="infoText">Choose board size, difficulty level and play with fun!</h3>
+         <h3 id="infoText"  class="hideInGame">Choose board size, difficulty level and play with fun!</h3>
          <div id="gameSize">
              <p class="paramText">Enter size (from 2 to 16) of board:</p>
              <input id="gameSizeInput" type="number" min="2" max="16" value="6"></input>
@@ -39,9 +39,10 @@
  </div>
  <!-- Main Content  -->
  <div id="gameBoard">
-     <svg id="mask"></svg>
+     <svg id="mask" class="svgBoardMask"></svg>
 </div>
 
+ <script src="functions.js"></script>
  <script src="Field.js"></script>
  <script src="Board.js"></script>
  <script src="Game.js"></script>

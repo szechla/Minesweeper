@@ -126,6 +126,7 @@ class Board {
         mask.style.height = 1.01 * fieldSize * size;
         mask.style.height += ' px'
         mask.style.width = mask.style.height;
+        mask.classList.add("show");
 
         for (let column of this.fields) {
             for (let field of column) {
